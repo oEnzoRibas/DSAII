@@ -1,9 +1,9 @@
-package Lists.One.Exs.One;
+package Lists.L1.Exs.one;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main() {
+    public static void main(String[] args) {
 
         double num;
         Scanner kIn = new Scanner(System.in);
