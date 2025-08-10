@@ -1,19 +1,18 @@
-package Lists.L1.Exs.one;
+package Lists.L1.Exs.A;
 
 import java.util.Scanner;
 
-public class Main {
+public class CheckNumSign {
     public static void main(String[] args) {
-
         double num;
         Scanner kIn = new Scanner(System.in);
 
         System.out.println("Write a number");
         num = kIn.nextDouble();
-        System.out.println(numSign(num));
+        System.out.println(checkNumSign(num));
     }
 
-    public static String numSign(double n) {
+    public static String checkNumSign(double n) {
         String result;
 
         if (n == 0) result = "Zero";
