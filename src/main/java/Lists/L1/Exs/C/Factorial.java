@@ -11,7 +11,7 @@ public class Factorial {
         n = kIn.nextInt();
         System.out.println(factorial(n));
     }
-    private static Integer factorial(Integer n){
+    private static int factorial(int n){
         if (n == 0){
             return 1;
         }
