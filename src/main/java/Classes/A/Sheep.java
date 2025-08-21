@@ -1,12 +1,16 @@
-package Classes.third;
+package Classes.A;
 
 public class Sheep extends Animal{
     void print(){
         super.name = "Calanguinha";
-        super.age = 10;
+        super.age = 10; // this.age or just age = 10 would work
 
         super.printName();
         super.printAge();
+
+        age = 20;
+        this.name = "Ovelhinha";
+
     }
 
     public static void main(String[] args) {
