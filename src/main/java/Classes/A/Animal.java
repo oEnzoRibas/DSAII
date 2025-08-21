@@ -1,4 +1,4 @@
-package Classes.third;
+package Classes.A;
 
 public class Animal {
     protected String name;
@@ -13,7 +13,7 @@ public class Animal {
         System.out.println(this.age);
     }
 
-    private void printId(){
+    private void printId() {
         System.out.println(this.id);
     }
 }

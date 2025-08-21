@@ -1,4 +1,4 @@
-package Classes.third;
+package Classes.A;
 
 public class Sheep extends Animal{
     void print(){
@@ -31,3 +31,4 @@ public class Sheep extends Animal{
         s.printName();
     }
 }
+
