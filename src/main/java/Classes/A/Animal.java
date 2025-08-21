@@ -13,7 +13,7 @@ public class Animal {
         System.out.println(this.age);
     }
 
-    private void printId(){
+    private void printId() {
         System.out.println(this.id);
     }
 }
