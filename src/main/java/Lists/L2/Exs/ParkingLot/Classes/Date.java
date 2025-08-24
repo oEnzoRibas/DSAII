@@ -1,4 +1,4 @@
-package Lists.L2.Exs.ParkingLot;
+package Lists.L2.Exs.ParkingLot.Classes;
 
 import java.util.Calendar;
 

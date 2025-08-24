@@ -1,12 +1,15 @@
-package Lists.L2.Exs.ParkingLot;
+package Lists.L2.Exs.ParkingLot.Classes;
+
+import Lists.L2.Exs.ParkingLot.Services.BillingService;
 
 import java.util.ArrayList;
 
 public class ParkingLot {
 
-    private final float hourlyRate;
+    private float hourlyRate = 1.0f;
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
     private ArrayList<Client> clients = new ArrayList<>();
+    private BillingService billingService = new BillingService(hourlyRate);
 
     public ParkingLot(float hourlyRate) {
         this.hourlyRate = hourlyRate;
@@ -20,58 +23,30 @@ public class ParkingLot {
     }
 
     public void vehicleExit(String plate, Date exitDate) {
-
-        if (vehicles.isEmpty()) {
-            System.out.println("No vehicles registered.");
-            return;
-        }
-
-        Vehicle v = null;
-
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle.getPlate().equalsIgnoreCase(plate)) {
-                v = vehicle;
-                break;
-            }
-        }
-
+        Vehicle v = findVehicleByPlate(plate);
         if (v == null) {
             System.out.println("Vehicle not found.");
             return;
         }
-        v.setExit(exitDate);
-        float cost = calculateCost(v, hourlyRate);
-        v.setCost(cost);
-        v.setParked(false);
 
-        System.out.println("Vehicle exit recorded. Total cost: $" + cost);
+        v.setExit(exitDate);
+        v.setParked(false);
+        billingService.processPayment(v);
+    }
+
+    private Vehicle findVehicleByPlate(String plate) {
+        for (Vehicle v : vehicles) {
+            if (v.getPlate().equalsIgnoreCase(plate) && v.isParked()) {
+                return v;
+            }
+        }
+        return null;
     }
 
     public void registerClient(String name, int cpf) {
         Client c = new Client(cpf, name);
         clients.add(c);
         System.out.println("Client registered successfully with CPF: " + c.getCpf());
-    }
-
-    /**
-     * The cost is calculated based on the difference between entry and exit times in hour multiplied by the hourly rate.
-     * If the vehicle is still parked, the current time is used as the exit time.
-     * @param v vehicle
-     * @param hourlyRate hourly rate
-     * @return cost
-     */
-    float calculateCost(Vehicle v, float hourlyRate) {
-        int diff;
-        Date entry = v.getEntry();
-        Date exit = v.getExit();
-        Client client = v.getClient();
-
-        diff = exit == null ? entry.difference(new Date(true)) : entry.difference(exit);
-        if (client != null) {
-            System.out.println("Client identified. Applying 10% discount.");
-            diff = (int) (diff * 0.9);
-        }
-        return ((float) diff / 3600) * hourlyRate;
     }
 
     void showParkedVehicles(){
@@ -158,16 +133,8 @@ public class ParkingLot {
     }
 
     float getRevenue(int month){
-        float total = 0;
-        for(Vehicle v : vehicles){
-            if(!v.isParked() && v.getExit() != null && v.getExit().getMonth() == month){
-                total += v.getCost();
-            }
-        }
-        System.out.println("\n------------------------------------------------------------\n");
-        System.out.println("TOTAL EARNING IN MONTH " + month + ": R$" + total);
-        System.out.println("\n-----------------------------------------------------------\n");
-        return total;
+
+        return billingService.totalMonthRevenue(vehicles, month);
 
     }
 

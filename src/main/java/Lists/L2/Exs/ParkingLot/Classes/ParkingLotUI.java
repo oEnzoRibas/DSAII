@@ -1,4 +1,4 @@
-package Lists.L2.Exs.ParkingLot;
+package Lists.L2.Exs.ParkingLot.Classes;
 
 import java.util.Scanner;
 
@@ -204,10 +204,20 @@ public class ParkingLotUI {
         int month = Integer.parseInt(scanner.nextLine());
 
         System.out.printf("--- Revenue Report of %s---", Date.getMonthName(month));
-        System.out.println("Total Revenue: R$" + parkingLot.getRevenue(month));
+        float totalRevenue = parkingLot.getRevenue(month);
+
+        System.out.println("\n------------------------------------------------------------\n");
+        System.out.println("TOTAL REVENUE IN MONTH " + month + ": R$" + totalRevenue);
+        System.out.println("\n-----------------------------------------------------------\n");
     }
 
     private Date customDateMenu() {
+        System.out.println("Enter day (1-31): ");
+        int day = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter month (1-12): ");
+        int month = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter year (e.g., 2024): ");
+        int year = Integer.parseInt(scanner.nextLine());
         System.out.print("Enter hour (0-23): ");
         int hour = Integer.parseInt(scanner.nextLine());
         System.out.print("Enter minute (0-59): ");
@@ -215,7 +225,7 @@ public class ParkingLotUI {
         System.out.print("Enter second (0-59): ");
         int second = Integer.parseInt(scanner.nextLine());
 
-        return new Date(hour, minute, second);
+        return new Date(hour, minute, second, day, month, year);
     }
 
     private void clearScreen() {
@@ -223,7 +233,7 @@ public class ParkingLotUI {
         System.out.flush();
     }
 
-    protected void populatingData(){
+    public void populatingData(){
         parkingLot.registerClient("Alice", 123456789);
         parkingLot.registerClient("Bob", 987654321);
         parkingLot.registerClient("Charlie", 111222333);
