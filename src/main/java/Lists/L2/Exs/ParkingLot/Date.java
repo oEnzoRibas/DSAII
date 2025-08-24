@@ -20,6 +20,13 @@ public class Date {
         this.second = second;
     }
 
+    public Date(int hour, int minute, int second, int day, int month, int year) {
+        this(hour, minute, second);
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
     public Date(boolean realDate) {
         this();
         this.hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -54,10 +61,13 @@ public class Date {
      * @param other Date to compare with
      * @return Difference in seconds
      */
-    int difference(Date other) {
-        int totalSeconds1 = this.hour * 3600 + this.minute * 60 + this.second;
-        int totalSeconds2 = other.hour * 3600 + other.minute * 60 + other.second;
-        return Math.abs(totalSeconds1 - totalSeconds2);
+    public int difference(Date other) {
+        Calendar cal1 = Calendar.getInstance();
+        cal1.set(this.year, this.month - 1, this.day, this.hour, this.minute, this.second);
+        Calendar cal2 = Calendar.getInstance();
+        cal2.set(other.year, other.month - 1, other.day, other.hour, other.minute, other.second);
+        long diffMillis = Math.abs(cal1.getTimeInMillis() - cal2.getTimeInMillis());
+        return (int) (diffMillis / 1000);
     }
 
     public int getMonth() {

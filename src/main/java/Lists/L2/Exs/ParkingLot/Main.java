@@ -8,6 +8,7 @@ public class Main {
 
         ParkingLot lot = new ParkingLot(HOURLY_RATE);
         ParkingLotUI ui = new ParkingLotUI(lot);
+        ui.populatingData();
         ui.start();
     }
 }

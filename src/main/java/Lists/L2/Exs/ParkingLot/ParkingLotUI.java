@@ -223,6 +223,15 @@ public class ParkingLotUI {
         System.out.flush();
     }
 
+    protected void populatingData(){
+        parkingLot.registerClient("Alice", 123456789);
+        parkingLot.registerClient("Bob", 987654321);
+        parkingLot.registerClient("Charlie", 111222333);
+        parkingLot.vehicleEntry("Toyota Corolla", "ABC1234", new Date(9, 30, 0,12,1,2024), parkingLot.getClientByCpf(123456789));
+        parkingLot.vehicleEntry("Honda Civic", "XYZ5678", new Date(10, 15, 0), null);
+        parkingLot.vehicleEntry("Ford Focus", "LMN9101", new Date(11, 45, 0), parkingLot.getClientByCpf(987654321));
+    }
+
     private void exit(){
         System.out.println("ahh, it over... My sun, it's setting... it's dark, so dark...");
         scanner.close();
