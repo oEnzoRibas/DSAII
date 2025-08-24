@@ -1,9 +1,9 @@
 package Lists.L2.Exs.ParkingLot;
 
 public class Client {
-    protected int cpf;
-    protected String name;
-    protected Date dateRegistration;
+    private int cpf;
+    private String name;
+    private Date dateRegistration;
 
     public Client(int cpf, String name) {
         this.cpf = cpf;
@@ -21,6 +21,18 @@ public class Client {
 
     public String getName() {
         return name;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateRegistration(Date dateRegistration) {
+        this.dateRegistration = dateRegistration;
     }
 
     public Date getDateRegistration() {

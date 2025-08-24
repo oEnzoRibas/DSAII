@@ -12,24 +12,14 @@ public class ParkingLot {
         this.hourlyRate = hourlyRate;
     }
 
-    public void vehicleEntry( String model, String plate, int hour, int minute, int second) {
-        Date entryDate = new Date(hour, minute, second);
-        Vehicle v = new Vehicle(model, plate, entryDate);
+    public void vehicleEntry(String model, String plate, Date entryDate, Client client) {
+        Vehicle v = new Vehicle(model, plate, entryDate, client);
         v.setParked(true);
         vehicles.add(v);
         System.out.println("Vehicle registered successfully with ID: " + v.getCode());
     }
 
-    public void vehicleEntry( String model, String plate, int hour, int minute, int second, Client c) {
-        Date entryDate = new Date(hour, minute, second);
-        Vehicle v = new Vehicle(model, plate, entryDate);
-        v.setParked(true);
-        v.setClient(c);
-        vehicles.add(v);
-        System.out.println("Vehicle registered successfully with ID: " + v.getCode());
-    }
-
-    public void vehicleExit(String plate, int hour, int minute, int second) {
+    public void vehicleExit(String plate, Date exitDate) {
 
         if (vehicles.isEmpty()) {
             System.out.println("No vehicles registered.");
@@ -49,8 +39,6 @@ public class ParkingLot {
             System.out.println("Vehicle not found.");
             return;
         }
-
-        Date exitDate = new Date(hour, minute, second);
         v.setExit(exitDate);
         float cost = calculateCost(v, hourlyRate);
         v.setCost(cost);
@@ -59,7 +47,7 @@ public class ParkingLot {
         System.out.println("Vehicle exit recorded. Total cost: $" + cost);
     }
 
-    public void registerClient(int cpf, String name) {
+    public void registerClient(String name, int cpf) {
         Client c = new Client(cpf, name);
         clients.add(c);
         System.out.println("Client registered successfully with CPF: " + c.getCpf());
@@ -74,8 +62,12 @@ public class ParkingLot {
      */
     float calculateCost(Vehicle v, float hourlyRate) {
         int diff;
-        diff = v.exit == null ? v.entry.difference(new Date(true)) : v.entry.difference(v.exit);
-        if (v.client != null) {
+        Date entry = v.getEntry();
+        Date exit = v.getExit();
+        Client client = v.getClient();
+
+        diff = exit == null ? entry.difference(new Date(true)) : entry.difference(exit);
+        if (client != null) {
             System.out.println("Client identified. Applying 10% discount.");
             diff = (int) (diff * 0.9);
         }
@@ -90,7 +82,7 @@ public class ParkingLot {
         System.out.println("\n------------------------------------------------------------\n");
         System.out.println("PARKED VEHICLES: \n");
         for(Vehicle v : vehicles){
-            if (v.isParked) System.out.println(
+            if (v.isParked()) System.out.println(
                     "Vehicle ID: " + v.getCode() +
                             ", Model: " + v.getModel() +
                             ", Plate: " + v.getPlate() +
@@ -101,7 +93,7 @@ public class ParkingLot {
         System.out.println("\n-----------------------------------------------------------\n");
     }
 
-    Client findClient(int cpf){
+    Client getClientByCpf(int cpf){
         if(clients.isEmpty()){
             System.out.println("No clients registered.");
             return null;
@@ -116,7 +108,7 @@ public class ParkingLot {
         return null;
     }
 
-    Client findClient(String name){
+    Client getClientByName(String name){
         if(clients.isEmpty()){
             System.out.println("No clients registered.");
             return null;
@@ -131,8 +123,24 @@ public class ParkingLot {
         return null;
     }
 
-    void deleteClient(Client c){
+    void removeClientByCpf(int cpf){
+        if(clients.isEmpty()){
+            System.out.println("No clients registered.");
+            return;
+        }
+        Client c = null;
+        for(Client client : clients){
+            if(client.getCpf() == cpf){
+                c = client;
+                break;
+            }
+        }
+        if(c == null){
+            System.out.println("Client not found.");
+            return;
+        }
         clients.remove(c);
+        System.out.println("Client removed successfully.");
     }
 
     void showClients(){
@@ -148,10 +156,10 @@ public class ParkingLot {
         System.out.println("\n-----------------------------------------------------------\n");
     }
 
-    float totalEarningsByMonth(int month){
+    float getRevenue(int month){
         float total = 0;
         for(Vehicle v : vehicles){
-            if(!v.isParked && v.getExit() != null && v.getExit().getMonth() == month){
+            if(!v.isParked() && v.getExit() != null && v.getExit().getMonth() == month){
                 total += v.getCost();
             }
         }
@@ -160,5 +168,25 @@ public class ParkingLot {
         System.out.println("\n-----------------------------------------------------------\n");
         return total;
 
+    }
+
+    public float getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(ArrayList<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public ArrayList<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(ArrayList<Client> clients) {
+        this.clients = clients;
     }
 }

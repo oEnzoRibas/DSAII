@@ -1,17 +1,15 @@
 package Lists.L2.Exs.ParkingLot;
 
-import java.util.Objects;
-
 public class Vehicle {
-    protected static int vehicleCont = 0;
-    protected int code;
-    protected String Model;
-    protected String Plate;
-    protected Date entry;
-    protected Date exit = null;
-    protected float cost = 0;
-    protected Client client = null;
-    protected boolean isParked = true;
+    private static int vehicleCont = 0;
+    private int code;
+    private String Model;
+    private String Plate;
+    private Date entry;
+    private Date exit = null;
+    private float cost = 0;
+    private Client client = null;
+    private boolean isParked = true;
 
     public int getCode() {
         return code;
@@ -67,6 +65,10 @@ public class Vehicle {
 
     public void setParked(boolean isParked) {
         this.isParked = isParked;
+    }
+
+    public boolean isParked() {
+        return isParked;
     }
 
     Vehicle(String Model, String Plate, Date entry){
