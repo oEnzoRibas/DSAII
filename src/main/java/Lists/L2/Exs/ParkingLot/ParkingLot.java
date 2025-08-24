@@ -74,7 +74,7 @@ public class ParkingLot {
         return ((float) diff / 3600) * hourlyRate;
     }
 
-    void showVehicles(){
+    void showParkedVehicles(){
         if(vehicles.isEmpty()){
             System.out.println("No vehicles registered.");
             return;
@@ -82,44 +82,45 @@ public class ParkingLot {
         System.out.println("\n------------------------------------------------------------\n");
         System.out.println("PARKED VEHICLES: \n");
         for(Vehicle v : vehicles){
-            if (v.isParked()) System.out.println(
-                    "Vehicle ID: " + v.getCode() +
-                            ", Model: " + v.getModel() +
-                            ", Plate: " + v.getPlate() +
-                            "\n Entry: " + v.getEntry().getDate() + (v.getExit() != null ?
-                            ", Exit: " + v.getExit().getDate() : "") +
-                            ", Cost: $" + calculateCost(v, hourlyRate));
+            if (v.isParked()) System.out.println(v.toString());
+        }
+        System.out.println("\n-----------------------------------------------------------\n");
+    }
+
+    void showAllVehicles(){
+        if(vehicles.isEmpty()){
+            System.out.println("No vehicles registered.");
+            return;
+        }
+        System.out.println("\n------------------------------------------------------------\n");
+        System.out.println("ALL VEHICLES: \n");
+        for(Vehicle v : vehicles){
+            System.out.println(v.toString());
         }
         System.out.println("\n-----------------------------------------------------------\n");
     }
 
     Client getClientByCpf(int cpf){
         if(clients.isEmpty()){
-            System.out.println("No clients registered.");
             return null;
         }
         for(Client c : clients){
             if(c.getCpf() == cpf){
-                System.out.println(c.getClientInfo());
                 return c;
             }
         }
-        System.out.println("Client not found.");
         return null;
     }
 
     Client getClientByName(String name){
         if(clients.isEmpty()){
-            System.out.println("No clients registered.");
             return null;
         }
         for(Client c : clients){
             if(c.getName().equalsIgnoreCase(name)){
-                System.out.println(c.getClientInfo());
                 return c;
             }
         }
-        System.out.println("Client not found.");
         return null;
     }
 
@@ -151,7 +152,7 @@ public class ParkingLot {
         System.out.println("\n------------------------------------------------------------\n");
         System.out.println("REGISTERED CLIENTS: \n");
         for(Client c : clients){
-            System.out.println(c.getClientInfo());
+            System.out.println(c.toString());
         }
         System.out.println("\n-----------------------------------------------------------\n");
     }

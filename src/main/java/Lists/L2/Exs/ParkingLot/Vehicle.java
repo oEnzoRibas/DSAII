@@ -83,4 +83,16 @@ public class Vehicle {
         this.client = client;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle ID: " + code +
+                ", Model: " + Model +
+                ", Plate: " + Plate +
+                ", Entry: " + entry.getDate() +
+                (exit != null ? ", Exit: " + exit.getDate() : "") +
+                ", Cost: $" + cost +
+                (isParked ? ", Status: Parked" : ", Status: Exited") +
+                (client != null ? "\n Client: " + client.getName() + " (CPF: " + client.getCpf() + ")" : "\n No client associated.");
+    }
+
 }

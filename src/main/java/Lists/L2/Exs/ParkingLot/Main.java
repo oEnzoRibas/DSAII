@@ -1,10 +1,12 @@
 package Lists.L2.Exs.ParkingLot;
 
-import java.util.Scanner;
-
 public class Main {
+    private static final float HOURLY_RATE = 1.0f;
+
     public static void main(String[] args) {
-        ParkingLot lot = new ParkingLot(1.0f);
+
+
+        ParkingLot lot = new ParkingLot(HOURLY_RATE);
         ParkingLotUI ui = new ParkingLotUI(lot);
         ui.start();
     }

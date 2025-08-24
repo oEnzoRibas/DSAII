@@ -11,8 +11,10 @@ public class Client {
         this.dateRegistration = new Date(true);
     }
 
-    public String getClientInfo() {
-        return "Client \n CPF: " + cpf + "\n Name: " + name + "\n Date of Registration: " + dateRegistration.getDate();
+    @Override
+    public String toString() {
+        return "Client \n CPF: " + cpf + "\n Name: " + name +
+                "\n Date of Registration: " + dateRegistration.getDate();
     }
 
     public int getCpf() {

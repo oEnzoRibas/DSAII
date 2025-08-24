@@ -42,7 +42,7 @@ public class ParkingLotUI {
                     parkingLot.showClients();
                     break;
                 case "5":
-                    parkingLot.showVehicles();
+                    vehiclesShowMenu();
                     break;
                 case "6":
                     revenueMenu();
@@ -63,6 +63,7 @@ public class ParkingLotUI {
         if (!parkingLot.getClients().isEmpty()) {
             System.out.println("2. Update Client");
             System.out.println("3. Delete Client");
+            System.out.println("4. Search Client");
         }
         System.out.println("0. Back");
 
@@ -78,6 +79,9 @@ public class ParkingLotUI {
             case "3":
                 deleteClient();
                 break;
+            case "4":
+                System.out.println(searchClient().toString());
+                break;
             case "0":
                 return;
             default:
@@ -90,25 +94,69 @@ public class ParkingLotUI {
         String name = scanner.nextLine();
         System.out.print("Enter client CPF: ");
         int cpf = Integer.parseInt(scanner.nextLine());
+        if (parkingLot.getClientByCpf(cpf) != null) {
+            System.out.println("Client with this CPF already exists.");
+            return;
+        }
         parkingLot.registerClient(name, cpf);
     }
 
     private void updateClient() {
         System.out.print("Enter client CPF: ");
-        int cpf = Integer.parseInt(scanner.nextLine());
-        Client c = parkingLot.getClientByCpf(cpf);
+        Client c = getCliByCpfUI();
         if (c == null) {
-            System.out.println("Client not found.");
             return;
         }
         System.out.print("New name: ");
         c.setName(scanner.nextLine());
     }
 
+    private Client searchClient() {
+        System.out.println("Search by: 1. CPF 2. Name");
+        String choice = scanner.nextLine();
+        if (choice.equals("1")) {
+            return getCliByCpfUI();
+        } else if (choice.equals("2")) {
+            return getCliByNameUI();
+        } else {
+            System.out.println("Invalid option");
+            return null;
+        }
+    }
+
+    private Client getCliByCpfUI() {
+        System.out.print("Enter client CPF: ");
+        int cpf = Integer.parseInt(scanner.nextLine());
+        return parkingLot.getClientByCpf(cpf);
+    }
+
+    private Client getCliByNameUI() {
+        System.out.print("Enter client name: ");
+        String name = scanner.nextLine();
+        return parkingLot.getClientByName(name);
+    }
+
     private void deleteClient() {
         System.out.print("Enter client CPF: ");
         int cpf = Integer.parseInt(scanner.nextLine());
         parkingLot.removeClientByCpf(cpf);
+    }
+
+    private void vehiclesShowMenu(){
+        System.out.println("1. Show Parked Vehicles\n2. Show All Vehicles\n0. Back");
+        String choice = scanner.nextLine();
+        switch (choice) {
+            case "1":
+                parkingLot.showParkedVehicles();
+                break;
+            case "2":
+                parkingLot.showAllVehicles();
+                break;
+            case "0":
+                return;
+            default:
+                System.out.println("Invalid option");
+        }
     }
 
     private void vehicleEntryMenu() {
