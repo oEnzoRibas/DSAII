@@ -1,7 +1,7 @@
-package Lists.L2.Exs.ParkingLot;
+package Course.Lists.L2.Exs.ParkingLot;
 
-import Lists.L2.Exs.ParkingLot.Classes.ParkingLot;
-import Lists.L2.Exs.ParkingLot.Classes.ParkingLotUI;
+import Course.Lists.L2.Exs.ParkingLot.Classes.ParkingLot;
+import Course.Lists.L2.Exs.ParkingLot.Classes.ParkingLotUI;
 
 public class Main {
     private static final float HOURLY_RATE = 1.0f;

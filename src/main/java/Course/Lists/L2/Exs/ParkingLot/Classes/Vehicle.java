@@ -1,6 +1,6 @@
-package Lists.L2.Exs.ParkingLot.Classes;
+package Course.Lists.L2.Exs.ParkingLot.Classes;
 
-import Lists.L2.Exs.ParkingLot.Interfaces.Payable;
+import Course.Lists.L2.Exs.ParkingLot.Interfaces.Payable;
 
 public class Vehicle implements Payable {
     private static int vehicleCont = 0;

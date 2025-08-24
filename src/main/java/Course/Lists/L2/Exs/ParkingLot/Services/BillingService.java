@@ -1,8 +1,8 @@
-package Lists.L2.Exs.ParkingLot.Services;
+package Course.Lists.L2.Exs.ParkingLot.Services;
 
-import Lists.L2.Exs.ParkingLot.Classes.Client;
-import Lists.L2.Exs.ParkingLot.Classes.Date;
-import Lists.L2.Exs.ParkingLot.Classes.Vehicle;
+import Course.Lists.L2.Exs.ParkingLot.Classes.Client;
+import Course.Lists.L2.Exs.ParkingLot.Classes.Date;
+import Course.Lists.L2.Exs.ParkingLot.Classes.Vehicle;
 
 import java.util.ArrayList;
 

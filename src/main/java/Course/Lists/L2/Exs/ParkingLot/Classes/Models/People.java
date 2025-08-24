@@ -1,4 +1,4 @@
-package Lists.L2.Exs.ParkingLot.Classes.Models;
+package Course.Lists.L2.Exs.ParkingLot.Classes.Models;
 
 public class People {
     protected int cpf;

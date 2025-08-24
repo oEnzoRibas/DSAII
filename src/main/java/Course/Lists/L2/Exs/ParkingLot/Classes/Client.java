@@ -1,6 +1,6 @@
-package Lists.L2.Exs.ParkingLot.Classes;
+package Course.Lists.L2.Exs.ParkingLot.Classes;
 
-import Lists.L2.Exs.ParkingLot.Classes.Models.People;
+import Course.Lists.L2.Exs.ParkingLot.Classes.Models.People;
 
 public class Client extends People {
     private Date dateRegistration;

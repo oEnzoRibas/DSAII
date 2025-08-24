@@ -1,6 +1,6 @@
-package Lists.L2.Exs.ParkingLot.Classes;
+package Course.Lists.L2.Exs.ParkingLot.Classes;
 
-import Lists.L2.Exs.ParkingLot.Services.BillingService;
+import Course.Lists.L2.Exs.ParkingLot.Services.BillingService;
 
 import java.util.ArrayList;
 
