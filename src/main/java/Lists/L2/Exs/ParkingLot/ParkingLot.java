@@ -12,10 +12,19 @@ public class ParkingLot {
         this.hourlyRate = hourlyRate;
     }
 
-    public void vehicleEntry( String model, String plate) {
-        Date entryDate = new Date(); // data/hora atual
+    public void vehicleEntry( String model, String plate, int hour, int minute, int second) {
+        Date entryDate = new Date(hour, minute, second);
         Vehicle v = new Vehicle(model, plate, entryDate);
         v.setParked(true);
+        vehicles.add(v);
+        System.out.println("Vehicle registered successfully with ID: " + v.getCode());
+    }
+
+    public void vehicleEntry( String model, String plate, int hour, int minute, int second, Client c) {
+        Date entryDate = new Date(hour, minute, second);
+        Vehicle v = new Vehicle(model, plate, entryDate);
+        v.setParked(true);
+        v.setClient(c);
         vehicles.add(v);
         System.out.println("Vehicle registered successfully with ID: " + v.getCode());
     }
@@ -56,10 +65,21 @@ public class ParkingLot {
         System.out.println("Client registered successfully with CPF: " + c.getCpf());
     }
 
+    /**
+     * The cost is calculated based on the difference between entry and exit times in hour multiplied by the hourly rate.
+     * If the vehicle is still parked, the current time is used as the exit time.
+     * @param v vehicle
+     * @param hourlyRate hourly rate
+     * @return cost
+     */
     float calculateCost(Vehicle v, float hourlyRate) {
         int diff;
         diff = v.exit == null ? v.entry.difference(new Date(true)) : v.entry.difference(v.exit);
-        return (float) (diff / 3600) * hourlyRate;
+        if (v.client != null) {
+            System.out.println("Client identified. Applying 10% discount.");
+            diff = (int) (diff * 0.9);
+        }
+        return ((float) diff / 3600) * hourlyRate;
     }
 
     void showVehicles(){
@@ -67,6 +87,8 @@ public class ParkingLot {
             System.out.println("No vehicles registered.");
             return;
         }
+        System.out.println("\n------------------------------------------------------------\n");
+        System.out.println("PARKED VEHICLES: \n");
         for(Vehicle v : vehicles){
             if (v.isParked) System.out.println(
                     "Vehicle ID: " + v.getCode() +
@@ -76,6 +98,7 @@ public class ParkingLot {
                             ", Exit: " + v.getExit().getDate() : "") +
                             ", Cost: $" + calculateCost(v, hourlyRate));
         }
+        System.out.println("\n-----------------------------------------------------------\n");
     }
 
     Client findClient(int cpf){
@@ -110,7 +133,6 @@ public class ParkingLot {
 
     void deleteClient(Client c){
         clients.remove(c);
-        System.out.println("Client removed successfully.");
     }
 
     void showClients(){
@@ -118,9 +140,12 @@ public class ParkingLot {
             System.out.println("No clients registered.");
             return;
         }
+        System.out.println("\n------------------------------------------------------------\n");
+        System.out.println("REGISTERED CLIENTS: \n");
         for(Client c : clients){
             System.out.println(c.getClientInfo());
         }
+        System.out.println("\n-----------------------------------------------------------\n");
     }
 
     float totalEarningsByMonth(int month){
@@ -130,7 +155,10 @@ public class ParkingLot {
                 total += v.getCost();
             }
         }
-        System.out.println("Total pago pelos clientes no mês " + month + ": R$" + total);
+        System.out.println("\n------------------------------------------------------------\n");
+        System.out.println("TOTAL EARNING IN MONTH " + month + ": R$" + total);
+        System.out.println("\n-----------------------------------------------------------\n");
         return total;
+
     }
 }

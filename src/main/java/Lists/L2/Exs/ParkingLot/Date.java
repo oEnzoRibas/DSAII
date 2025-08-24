@@ -31,6 +31,11 @@ public class Date {
         return day + "/" + month + "/" + year+ " " + hour + ":" + minute + ":" + second;
     }
 
+    /**
+     * Calculates the difference in seconds between two Date objects.
+     * @param other Date to compare with
+     * @return Difference in seconds
+     */
     int difference(Date other) {
         int totalSeconds1 = this.hour * 3600 + this.minute * 60 + this.second;
         int totalSeconds2 = other.hour * 3600 + other.minute * 60 + other.second;

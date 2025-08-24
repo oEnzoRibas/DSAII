@@ -1,5 +1,7 @@
 package Lists.L2.Exs.ParkingLot;
 
+import java.util.Objects;
+
 public class Vehicle {
     protected static int vehicleCont = 0;
     protected int code;

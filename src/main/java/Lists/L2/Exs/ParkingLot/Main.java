@@ -11,6 +11,7 @@ public class Main {
         int option;
 
         do {
+            System.out.println("\n-----------------------------------------------------------\n");
             System.out.println("Welcome to the Parking Lot System Press 9 to exit");
             do {
                 System.out.println("""
@@ -32,7 +33,30 @@ public class Main {
                     String model = kIn.nextLine();
                     System.out.println("Enter vehicle plate:");
                     String plate = kIn.nextLine();
-                    parkingLot.vehicleEntry(model, plate);
+                    System.out.println("Enter entry hour:");
+                    int hour = kIn.nextInt();
+                    System.out.println("Enter entry minute:");
+                    int minute = kIn.nextInt();
+                    System.out.println("Enter entry second:");
+                    int second = kIn.nextInt();
+                    System.out.println(""" 
+                            Identify client?
+                            1. Yes
+                            2. No""");
+                    int identify = kIn.nextInt();
+                    kIn.nextLine();
+
+                    if (identify == 1) {
+                        System.out.println("Search for client:");
+                        Client c = searchClientInterface();
+                        if (c != null) {
+                            parkingLot.vehicleEntry(model, plate, hour, minute, second, c);
+                        } else {
+                            System.out.println("Client not found. Proceeding without client association.");
+                        }
+                    }else {
+                        parkingLot.vehicleEntry(model, plate, hour, minute, second);
+                    }
                 }
                 case 2 -> {
                     System.out.println("Enter vehicle plate:");
@@ -46,6 +70,7 @@ public class Main {
                     parkingLot.vehicleExit(plate, hour, minute, second);
                 }
                 case 3 -> {
+                    int optionClient = 0;
                     do {
                         System.out.println("""
                                 Client Section:
@@ -54,10 +79,10 @@ public class Main {
                                 3. Delete Client
                                 4. Search Client
                                 9. Exit""");
-                        option = kIn.nextInt();
+                        optionClient = kIn.nextInt();
                         kIn.nextLine();
 
-                        switch (option) {
+                        switch (optionClient) {
                             case 1 -> {
                                 System.out.println("Enter client CPF:");
                                 int cpf = kIn.nextInt();
@@ -89,8 +114,10 @@ public class Main {
                                     System.out.println(c.getClientInfo());
                                 }
                             }
+                            case 9 -> System.out.println("Exiting Client Section.");
+                            default -> System.out.println("Invalid option.");
                         }
-                    } while (option != 9);
+                    } while (optionClient != 9);
 
                 }
                 case 4 -> parkingLot.showVehicles();
@@ -101,41 +128,40 @@ public class Main {
                     kIn.nextLine();
                     System.out.println("Total earnings by month: $" + parkingLot.totalEarningsByMonth(month));
                 }
+                case 9 -> System.out.println("Exiting system. Goodbye!");
+                default -> System.out.println("Invalid Option!");
             }
         } while (option != 9);
 
 
         kIn.close();
     }
-        static Client searchClientInterface () {
-            System.out.println("""
-                    Search by:
-                    1. CPF
-                    2. Name""");
 
-            int searchOption = kIn.nextInt();
-            kIn.nextLine();
+    static Client searchClientInterface() {
+        System.out.println("""
+                Search by:
+                1. CPF
+                2. Name""");
 
-            Client c = null;
+        int searchOption = kIn.nextInt();
+        kIn.nextLine();
 
-            switch (searchOption) {
-                case 1 -> {
-                    int cpf = kIn.nextInt();
-                    kIn.nextLine();
-                    c = parkingLot.findClient(cpf);
-                }
-                case 2 -> {
-                    String name = kIn.nextLine();
-                    c = parkingLot.findClient(name);
-                }
+        Client c = null;
+
+        switch (searchOption) {
+            case 1 -> {
+                System.out.println("Enter client CPF:");
+                int cpf = kIn.nextInt();
+                kIn.nextLine();
+                c = parkingLot.findClient(cpf);
             }
-
-            if (c == null) {
-                System.out.println("Client not found.");
-                return null;
-            } else {
-                return c;
+            case 2 -> {
+                System.out.println("Enter client name:");
+                String name = kIn.nextLine();
+                c = parkingLot.findClient(name);
             }
+            default -> System.out.println("Invalid option.");
         }
-
+        return c;
+    }
 }
