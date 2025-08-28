@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0cdf3260-69db-41fe-b265-c7079c10243e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Lists/L1/Exs/C/Factorial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Lists/L1/Exs/C/Factorial.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;oEnzoRibas&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/oEnzoRibas/DSAII.git&quot;,
+    &quot;accountId&quot;: &quot;e5703890-0697-4423-817f-fc0b259fdebe&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="314Lkg0qmMPJeLgYDKWx57qJFTI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Factorial.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Mean.executor": "Run",
+    "Application.Palindrome.executor": "Run",
+    "Application.Sheep.executor": "Run",
+    "Application.main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.preview.features.used": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/maria/OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA/Faculdade/ESDHC/CP/4S/DSAII/src/main/java/Lists/L1/Exs/three",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/maria/OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA/Faculdade/ESDHC/CP/4S/DSAII/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.39702517",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\maria\OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA\Faculdade\ESDHC\CP\4S\DSAII\src\main\java\Lists\L1\Exs\three" />
+      <recent name="C:\Users\maria\OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA\Faculdade\ESDHC\CP\4S\DSAII\src\test\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maria\OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA\Faculdade\ESDHC\CP\4S\DSAII\src\main\java" />
+      <recent name="C:\Users\maria\OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA\Faculdade\ESDHC\CP\4S\DSAII\src\main" />
+      <recent name="C:\Users\maria\OneDrive - FUNDAÇÃO MOVIMENTO DIREITO E CIDADANIA\Faculdade\ESDHC\CP\4S\DSAII\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Lists.L1.Exs.three" />
+      <recent name="Lists.L1.Exs.two" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0cdf3260-69db-41fe-b265-c7079c10243e" name="Changes" comment="" />
+      <created>1754778546802</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754778546802</updated>
+      <workItem from="1754778548434" duration="1097000" />
+      <workItem from="1754779683372" duration="1196000" />
+      <workItem from="1754784951808" duration="5904000" />
+      <workItem from="1755733928898" duration="2285000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
