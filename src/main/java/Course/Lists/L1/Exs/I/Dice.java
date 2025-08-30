@@ -1,4 +1,4 @@
-package Lists.L1.Exs.I;
+package Course.Lists.L1.Exs.I;
 
 public class Dice {
     public static void main(String[] args) {

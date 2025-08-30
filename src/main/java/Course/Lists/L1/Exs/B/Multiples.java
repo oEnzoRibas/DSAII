@@ -1,4 +1,4 @@
-package Lists.L1.Exs.B;
+package Course.Lists.L1.Exs.B;
 
 import java.util.ArrayList;
 

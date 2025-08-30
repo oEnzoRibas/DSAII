@@ -1,4 +1,4 @@
-package Lists.L1.Exs.J;
+package Course.Lists.L1.Exs.J;
 
 import org.w3c.dom.ls.LSOutput;
 

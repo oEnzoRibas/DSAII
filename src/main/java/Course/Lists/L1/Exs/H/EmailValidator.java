@@ -1,4 +1,4 @@
-package Lists.L1.Exs.H;
+package Course.Lists.L1.Exs.H;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

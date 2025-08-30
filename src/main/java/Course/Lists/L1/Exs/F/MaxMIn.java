@@ -1,4 +1,4 @@
-package Lists.L1.Exs.F;
+package Course.Lists.L1.Exs.F;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package Lists.L1.Exs.C;
+package Course.Lists.L1.Exs.C;
 
 import java.util.Scanner;
 

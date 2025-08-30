@@ -1,4 +1,4 @@
-package Lists.L1.Exs.E;
+package Course.Lists.L1.Exs.E;
 
 public class Mean {
     public static void main(String[] args) {
