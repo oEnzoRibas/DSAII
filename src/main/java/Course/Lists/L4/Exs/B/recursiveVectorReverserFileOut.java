@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class vectorReverserFileOut{
+public class recursiveVectorReverserFileOut {
 	public static void main(String[] args){
 		int[] vector = {12,13,314,15,16};
 		
@@ -17,7 +17,7 @@ public class vectorReverserFileOut{
 	
 	public static void fileOut(String str){	
 		try{
-			FileWriter w = new FileWriter("out.txt");
+			FileWriter w = new FileWriter("src/main/java/Course/Lists/L4/Exs/B/out.txt");
 			w.write(str);
 			w.close();
 			System.out.println("Arquivo Criado");
@@ -39,9 +39,7 @@ public class vectorReverserFileOut{
 		if (iIn >= in.length){
 			return;
 		}
-		
 		out[iOut] = in[iIn];
-		
 		reverterRec(in, out, iIn+1, iOut-1);
 	}
 }
