@@ -1,6 +1,6 @@
 package Course.Lists.L4.Exs.I;
 
-public class recursiveExponenciation {
+public class recursiveExponentiation {
     public static void main(String[] args) {
         System.out.println(pow(2,10));
     }

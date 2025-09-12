@@ -6,17 +6,15 @@ public class recursiveSum {
     public static void main(String[] args) {
         Scanner kIn = new Scanner(System.in);
 
-        System.out.println("Digite a");
+        System.out.println("Digite um numero");
         int a = kIn.nextInt();
-        System.out.println("Digite b");
-        int b = kIn.nextInt();
 
-        System.out.println(sum(a,b));
+        System.out.println(sum(a));
     }
 
-    static int sum( int a, int b){
+    static int sum(int a){
 
-        if (b == 0) return 0;
-        return b>0 ? a + 1 + sum(0, --b) : a - 1 + sum(0, ++b);
+        if (a == 0) return 0;
+        return a % 10 + sum(a / 10);
     }
 }

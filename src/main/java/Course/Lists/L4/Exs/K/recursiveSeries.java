@@ -14,9 +14,7 @@ public class recursiveSeries {
             case 1 -> {
                 return t1;
             }
-
         }
-
         return T(n-1) * T(n-2) - T(n-1);
     }
 }
