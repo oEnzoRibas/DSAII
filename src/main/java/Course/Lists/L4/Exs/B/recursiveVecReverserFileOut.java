@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class recursiveVectorReverserFileOut {
+public class recursiveVecReverserFileOut {
 	public static void main(String[] args){
 		int[] vector = {12,13,314,15,16};
 		
