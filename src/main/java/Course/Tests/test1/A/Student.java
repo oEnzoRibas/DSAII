@@ -1,4 +1,4 @@
-package A;
+package Course.Tests.test1.A;
 
 public class Student {
     private int student_id;
