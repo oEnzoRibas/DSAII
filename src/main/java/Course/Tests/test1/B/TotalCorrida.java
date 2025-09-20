@@ -1,4 +1,4 @@
-package Course.Tests.test1.B;
+package B;
 
 public class TotalCorrida {
     public static double calcularCustoUberBlack(int horaInicio, int minutoInicio,int horaFim, int minutoFim, double custoporsegundo){

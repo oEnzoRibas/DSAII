@@ -1,4 +1,4 @@
-package Course.Tests.test1.A;
+package A;
 
 public class InvalidGradeException extends RuntimeException {
   public InvalidGradeException(String message) {

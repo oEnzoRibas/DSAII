@@ -1,4 +1,4 @@
-package Course.Tests.test1.C;
+package C;
 
 public class recursiveFunction {
 

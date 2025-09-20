@@ -1,4 +1,4 @@
-package Course.Tests.test1.A;
+package A;
 
 public class EmptyNameException extends RuntimeException {
   public EmptyNameException(String message) {
