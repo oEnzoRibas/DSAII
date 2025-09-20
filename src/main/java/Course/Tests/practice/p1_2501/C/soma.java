@@ -1,4 +1,4 @@
-package Course.Tests.p1_2501.C;
+package Course.Tests.practice.p1_2501.C;
 
 public class soma {
     public static void main(String[] args) {

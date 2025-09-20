@@ -1,4 +1,4 @@
-package Course.Tests.p1_2501.B;
+package Course.Tests.practice.p1_2501.B;
 
 import java.util.Scanner;
 

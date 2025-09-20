@@ -1,4 +1,4 @@
-package Classes.A;
+package Course.Classes.A;
 
 public class Animal {
     protected String name;
