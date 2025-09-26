@@ -2,6 +2,8 @@ package Course.Lists.L5;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
+import java.util.Collections;
 
 public class ResearchAlgorithms {
     static Scanner kIn = new Scanner(System.in);
@@ -18,35 +20,68 @@ public class ResearchAlgorithms {
 
     // q2
     public void printList(ArrayList<String> list){
-        for(String str : list){
-            System.out.println(str);
-        }
+	    for(String str : list){
+		    System.out.println(str);
+	    }
     }
 
     // q3
-    boolean sequentialResearch(ArrayList<String> names, String name){
-        for (String str : names){
-            if ( str.equalsIgnoreCase(name) ) return true;
-        }
-        return false;
+    boolean sequentialSearch(ArrayList<String> names, String name){
+	    for (String str : names){
+		    if ( str.equalsIgnoreCase(name) ) return true;
+	    }
+	    return false;
+    }
+
+    boolean binarySearch(ArrayList<String> names, String name){
+	    int p1 =0;
+	    int p2 = names.size();
+	    int meio = (p1+p2)/2;
+
+
+	    Collections.sort(names);
+
+	    while (p1 < p2){
+		    int compareTo = names.get(meio).compareTo(name);
+			
+		    if (p2 == p1){
+			return false;
+			}
+		    if (names.get(meio).equalsIgnoreCase(name)){
+			    System.out.println(names.get(meio));
+			    return true;
+		    }else if( compareTo < 0 ){
+			    p1 = meio +1;
+		    }else if (compareTo > 0){
+			    p2 = meio-1;
+		    }
+	    }
+	    return false;
     }
 
 
+    public static void main(String args[]){
+
+	    ArrayList<String> names = new ArrayList<String>();
+
+	    names.add("enzo");
+	    names.add("joao");
+	    names.add("joao2");
+	    names.add("joao2212");
+	    names.add("joao22222");
+	    names.add("joao212");
+	    names.add("joao211111");
 
 
-    public static void main(String[] args) {
-        ArrayList<String> names = new ArrayList<>();
 
-        names.add("enzo");
-        names.add("enzo2");
-        names.add("enzo3");
-        names.add("enzo4");
-        names.add("enzo5");
 
-        ResearchAlgorithms a = new ResearchAlgorithms();
+	    ResearchAlgorithms ra = new ResearchAlgorithms();
 
-        a.printList(names);
+		ra.binarySearch(names, "joao");
 
-        System.out.println(a.sequentialResearch(names,"enzo7"));
-    }
+		
+
+
+		}
+	
 }
