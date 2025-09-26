@@ -36,19 +36,17 @@ public class ResearchAlgorithms {
     boolean binarySearch(ArrayList<String> names, String name){
 	    int p1 =0;
 	    int p2 = names.size();
-	    int meio = (p1+p2)/2;
+	    int meio ;
 
 
 	    Collections.sort(names);
 
 	    while (p1 < p2){
-		    int compareTo = names.get(meio).compareTo(name);
-			
-		    if (p2 == p1){
-			return false;
-			}
+		    meio = (p1+p2)/2;
+            int compareTo = names.get(meio).compareTo(name);
+            System.out.println(compareTo);
+
 		    if (names.get(meio).equalsIgnoreCase(name)){
-			    System.out.println(names.get(meio));
 			    return true;
 		    }else if( compareTo < 0 ){
 			    p1 = meio +1;
@@ -60,7 +58,7 @@ public class ResearchAlgorithms {
     }
 
 
-    public static void main(String args[]){
+    public static void main(String[] args){
 
 	    ArrayList<String> names = new ArrayList<String>();
 
@@ -77,7 +75,7 @@ public class ResearchAlgorithms {
 
 	    ResearchAlgorithms ra = new ResearchAlgorithms();
 
-		ra.binarySearch(names, "joao");
+        System.out.println(ra.binarySearch(names, "joao"));
 
 		
 
