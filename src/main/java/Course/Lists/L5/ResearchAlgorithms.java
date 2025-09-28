@@ -32,7 +32,39 @@ public class ResearchAlgorithms {
         return false;
     }
 
-    boolean removeWithBinarySearch(ArrayList<String> names, String name) {
+    //q4
+    boolean BinarySearch(ArrayList<String> names, String name) {
+        int p1 = 0;
+        int p2 = names.size();
+        int mid;
+
+        Collections.sort(names);
+
+        while (p1 < p2) {
+            mid = (p1 + p2) / 2;
+            int compareTo = names.get(mid).compareToIgnoreCase(name);
+
+            if (compareTo == 0) {
+                return true;
+            } else if (compareTo < 0) {
+                p1 = mid + 1;
+            } else {
+                p2 = mid - 1;
+            }
+        }
+        return false;
+    }
+
+    // q3
+    boolean removeWithSequentialSearch(ArrayList<String> names, String name) {
+        for (String str : names) {
+            if (str.equalsIgnoreCase(name)) names.remove(str);
+        }
+        return false;
+    }
+
+    //q6
+    void removeWithBinarySearch(ArrayList<String> names, String name) {
         int p1 = 0;
         int p2 = names.size();
         int mid;
@@ -45,37 +77,42 @@ public class ResearchAlgorithms {
 
             if (compareTo == 0) {
 				names.remove(mid);
-                return true;
             } else if (compareTo < 0) {
                 p1 = mid + 1;
             } else {
                 p2 = mid - 1;
             }
         }
-        return false;
     }
 
+    //q7
+    boolean recursiveSequentialSearch(int[] nums, int num, int position){
+        if (position == nums.length){
+            return false;
+        }
 
-    public static void main(String[] args) {
+        if (nums[position] == num){
+            return true;
+        }
 
-        ArrayList<String> names = new ArrayList<String>();
+        return recursiveSequentialSearch(nums , num, position+1);
+    }
+    //q7
 
-        names.add("enzo");
-        names.add("joao");
-        names.add("joao2");
-        names.add("joao2212");
-        names.add("joao22222");
-        names.add("joao212");
-        names.add("joao211111");
+    boolean recursiveBinarySearch(ArrayList<Integer> nums, int num, int p1, int p2){
+        Collections.sort(nums);
+        int mid = (p1+p2)/2;
+        if (p1 > p2){
+            return false;
+        }
 
-
-        ResearchAlgorithms ra = new ResearchAlgorithms();
-
-
-        System.out.println(ra.removeWithBinarySearch(names, "joao"));
-
-
-
+        if (nums.get(mid) == num){
+            return true;
+        }else if (nums.get(mid) < num){
+            return recursiveBinarySearch(nums , num, mid+1, p2);
+        }else {
+            return recursiveBinarySearch(nums , num, p1, mid-1);
+        }
     }
 
 }
