@@ -63,17 +63,47 @@ public class Stack {
         return max;
     }
 
+    public void popOrder(Cell<Integer> top) {
+        System.out.println(top.getElement());
+        if (top.getNext() == null) {
+            return;
+        }
+        popOrder(top.getNext());
+    }
+
+    public void bubbleSort(Cell<Integer> top){
+        for (Cell<Integer> head = top; top != null; head= head.getNext()) {
+                while (head != null) {
+                    if (head.getNext() != null) {
+                        int topElement = top.getElement();
+                        int nextTopElement = (top.getNext()).getElement();
+                        if (topElement > nextTopElement) {
+                            head.setElement(nextTopElement);
+                            head.getNext().setElement(topElement);
+                        }
+                    }
+                }
+        }
+    }
+
+    public Cell<Integer> getTop() {
+        return top;
+    }
+
     public static void main(String[] args) {
         Stack pilha = new Stack();
 
+        pilha.push(1);
+        pilha.push(2);
+        pilha.push(3);
+        pilha.push(4);
         pilha.push(5);
-        pilha.push(511);
-        pilha.push(5);
-        pilha.push(53);
-        pilha.push(51);
+        pilha.push(6);
         pilha.showStack();
 
-        System.out.println(pilha.max());
+        pilha.bubbleSort(pilha.top);
+
+        pilha.showStack();
 
 
     // System.out.printf("Size = %d", pilha.getSize());

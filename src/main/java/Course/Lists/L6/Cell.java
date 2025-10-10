@@ -21,11 +21,11 @@ public class Cell<E> {
         this.element = n;
     }
 
-    public Cell getNext() {
+    public Cell<E> getNext() {
         return this.next;
     }
 
-    public void setNext(Cell cell) {
+    public void setNext(Cell<E> cell) {
         this.next = cell;
     }
 }
