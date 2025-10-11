@@ -12,7 +12,7 @@ public class Stack {
     }
 
     public void push(Integer i) {
-        Cell tmp = new Cell(i);
+        Cell<Integer> tmp = new Cell<>(i);
         tmp.setNext(this.top);
         this.top = tmp;
         tmp = null;
@@ -24,7 +24,7 @@ public class Stack {
             throw new Exception("Stack is already empty!");
         }
         int element = this.top.getElement();
-        Cell tmp = this.top;
+        Cell<Integer> tmp = this.top;
         this.top = this.top.getNext();
         tmp.setNext(null);
         tmp = null;
@@ -33,7 +33,7 @@ public class Stack {
 
     public void showStack() {
         System.out.println("[");
-        for (Cell c = this.top; c != null; c = c.getNext()) {
+        for (Cell<Integer> c = this.top; c != null; c = c.getNext()) {
             System.out.println(c.getElement() + " ");
         }
         System.out.println("]");
@@ -72,17 +72,15 @@ public class Stack {
     }
 
     public void bubbleSort(Cell<Integer> top){
-        for (Cell<Integer> head = top; top != null; head= head.getNext()) {
-                while (head != null) {
-                    if (head.getNext() != null) {
-                        int topElement = top.getElement();
-                        int nextTopElement = (top.getNext()).getElement();
-                        if (topElement > nextTopElement) {
-                            head.setElement(nextTopElement);
-                            head.getNext().setElement(topElement);
-                        }
-                    }
-                }
+        for (; top != null; top= top.getNext()) {
+            Cell<Integer> tmp = top;
+
+            top.setNext(null);
+            top = null;
+            top = tmp.getNext();
+            tmp.setNext(top.getNext());
+            top.setNext(tmp);
+
         }
     }
 
