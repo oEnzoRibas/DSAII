@@ -2,11 +2,14 @@ package Course.Lists.L6.A;
 
 import Course.Lists.L6.Cell;
 
+import java.sql.SQLOutput;
+
 public class Stack {
 
     private Cell<Integer> top;
     private int size = 0;
 
+    // q1
     public Stack() {
         this.top = null;
     }
@@ -39,30 +42,32 @@ public class Stack {
         System.out.println("]");
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return (this.top == null);
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.size;
     }
 
-    public int sum(Cell<Integer> top){
+    //q2
+    public int sum(Cell<Integer> top) {
         if (top == null) return 0;
         return top.getElement() + sum(top.getNext());
     }
 
-
-    public int max(){
+    //q3
+    public int max() {
         int max = this.top.getElement();
-        for (Cell<Integer> c = this.top.getNext(); c != null; c = c.getNext()){
-            if (c.getElement() > max){
+        for (Cell<Integer> c = this.top.getNext(); c != null; c = c.getNext()) {
+            if (c.getElement() > max) {
                 max = c.getElement();
             }
         }
         return max;
     }
 
+    //q4
     public void popOrder(Cell<Integer> top) {
         System.out.println(top.getElement());
         if (top.getNext() == null) {
@@ -71,17 +76,122 @@ public class Stack {
         popOrder(top.getNext());
     }
 
-    public void bubbleSort(Cell<Integer> top){
-        for (; top != null; top= top.getNext()) {
-            Cell<Integer> tmp = top;
+    //q5
+    public void bubbleSort() throws RuntimeException {
+        if (top == null) throw new RuntimeException("Empty List");
 
-            top.setNext(null);
-            top = null;
-            top = tmp.getNext();
-            tmp.setNext(top.getNext());
-            top.setNext(tmp);
+        boolean swapped;
+        do {
+            swapped = false;
+            for (Cell<Integer> c2 = this.top; c2.getNext() != null; c2 = c2.getNext()) {
+                if (c2.getElement() > c2.getNext().getElement()) {
+
+                    Integer tmp = c2.getElement();
+                    c2.setElement(c2.getNext().getElement());
+                    c2.getNext().setElement(tmp);
+                    swapped = true;
+                }
+
+            }
+        } while (swapped);
+    }
+
+    //q6
+    public void selectionSort() throws RuntimeException {
+        if (top == null) throw new RuntimeException("Empty List");
+
+        for (Cell<Integer> i = this.top; i != null; i = i.getNext()) {
+            Cell<Integer> min = i;
+            for (Cell<Integer> j = i.getNext(); j != null; j = j.getNext()) {
+                if (j.getElement() > min.getElement()) {
+                    min = j;
+                }
+            }
+
+            Integer tmp = i.getElement();
+            i.setElement(min.getElement());
+            min.setElement(tmp);
+        }
+    }
+
+    public void pointerSelectionSort() throws RuntimeException {
+        if (top == null) throw new RuntimeException("Empty List");
+        Cell<Integer> dummy = new Cell<>();
+        Cell<Integer> st = dummy;
+        dummy.setNext(this.top);
+
+        while (st.getNext() != null) {
+            Cell<Integer> minPrev = st;
+            Cell<Integer> prev = st.getNext();
+            Cell<Integer> curr = prev.getNext();
+
+            while (curr != null) {
+                if (curr.getElement() > minPrev.getNext().getElement()) {
+                    minPrev = prev;
+                }
+                prev = curr;
+                curr = curr.getNext();
+            }
+            if (minPrev == st) {
+                st = st.getNext();
+                continue;
+            }
+
+            Cell<Integer> minNode, i, nextI, nextMin;
+            i = st.getNext();
+            minNode = minPrev.getNext();
+            nextI = i.getNext();
+            nextMin = minNode.getNext();
+
+            st.setNext(minNode);
+            minNode.setNext(nextI);
+            i.setNext(nextMin);
+            minPrev.setNext(i);
+
+            st = st.getNext();
+        }
+        top = dummy.getNext();
+    }
+
+
+    //q7
+    public void insertionSort() throws RuntimeException {
+        if (top == null) throw new RuntimeException("Empty List");
+
+        Cell<Integer> cur, prev, dummy = new Cell<>();
+        dummy.setNext(this.top);
+        prev = this.top;
+        cur = this.top.getNext();
+
+        while (cur != null) {
+            if (cur.getElement() >= prev.getElement()) {
+                prev = cur;
+                cur = cur.getNext();
+            } else {
+
+                Cell<Integer> tmp = dummy;
+                while (cur.getElement() > tmp.getNext().getElement()) {
+                    tmp = tmp.getNext();
+                }
+
+                prev.setNext(cur.getNext());
+                cur.setNext(tmp.getNext());
+                tmp.setNext(cur);
+                cur = prev.getNext();
+            }
 
         }
+        top = dummy.getNext();
+    }
+
+    public void countSort() {
+
+    }
+
+    public void swapElements(Cell<Integer> c1, Cell<Integer> c2) {
+        Integer tmp = c1.getElement();
+        c1.setElement(c2.getElement());
+        c2.setElement(tmp);
     }
 
     public Cell<Integer> getTop() {
@@ -91,46 +201,63 @@ public class Stack {
     public static void main(String[] args) {
         Stack pilha = new Stack();
 
+        pilha.push(6);
         pilha.push(1);
         pilha.push(2);
-        pilha.push(3);
+        pilha.push(-3);
         pilha.push(4);
         pilha.push(5);
-        pilha.push(6);
+        pilha.push(2);
+        System.out.println("Stack:");
         pilha.showStack();
 
-        pilha.bubbleSort(pilha.top);
+        System.out.printf("""
+                        Is Empty?, %b
+                        Size: %d
+                        Sum of elements: %d
+                        Max: %d
+                        """,
+                pilha.isEmpty(),
+                pilha.getSize(),
+                pilha.sum(pilha.getTop()),
+                pilha.max()
+        );
 
+        System.out.println("Pop Order:");
+        pilha.popOrder(pilha.getTop());
+
+        System.out.println("---------------------");
+        System.out.println("Bubble Sort");
+        pilha.push(21);
+        pilha.bubbleSort();
         pilha.showStack();
+        System.out.println("---------------------");
 
+        System.out.println("---------------------");
+        System.out.println("Decreasing Selection Sort");
+        pilha.push(2112);
+        pilha.selectionSort();
+        pilha.showStack();
+        System.out.println("---------------------");
 
-    // System.out.printf("Size = %d", pilha.getSize());
-    //     try{
-    //     pilha.pop();
-    // }
-    // catch (Exception e){
-    //     System.out.println(e.getMessage());
-    // }
+        System.out.println("---------------------");
+        System.out.println("Decreasing Selection Sort By Pointers");
+        pilha.push(11112);
+        pilha.pointerSelectionSort();
+        pilha.showStack();
+        System.out.println("---------------------");
 
-    // pilha.showStack();
-    // System.out.println(pilha.isEmpty());
+        System.out.println("---------------------");
+        System.out.println("Insetion Sort");
+        pilha.push(212);
+        pilha.insertionSort();
+        pilha.showStack();
+        System.out.println("---------------------");
 
-    // System.out.printf("Size = %d", pilha.getSize());
+        System.out.println("---------------------");
+        System.out.println("Count Sort");
+        pilha.showStack();
+        System.out.println("---------------------");
 
-    // try{
-    //     pilha.pop();
-    //     pilha.pop();
-    //     pilha.pop();
-    //     pilha.pop();
-    // }
-    // catch (Exception e){
-    //     System.out.println(e.getMessage());
-    // }
-    
-    // System.out.printf("Size = %d", pilha.getSize());
-
-    // pilha.showStack();
-    // System.out.println(pilha.isEmpty());
-        
     }
 }
