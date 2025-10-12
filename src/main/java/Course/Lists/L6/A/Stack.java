@@ -184,20 +184,39 @@ public class Stack {
         top = dummy.getNext();
     }
 
-    public void countSort() {
+    // q8
+    public void countingSortDesc() throws RuntimeException {
+        if (top == null) throw new RuntimeException("Empty List");
 
-    }
+        int min = top.getElement();
+        int max = top.getElement();
+        for (Cell<Integer> cur = top.getNext(); cur != null; cur = cur.getNext()) {
+            if (cur.getElement() < min) min = cur.getElement();
+            if (cur.getElement() > max) max = cur.getElement();
+        }
 
-    public void swapElements(Cell<Integer> c1, Cell<Integer> c2) {
-        Integer tmp = c1.getElement();
-        c1.setElement(c2.getElement());
-        c2.setElement(tmp);
+        int range = max - min + 1;
+        int[] count = new int[range];
+
+        for (Cell<Integer> cur = top; cur != null; cur = cur.getNext()) {
+            count[cur.getElement() - min]++;
+        }
+
+        Cell<Integer> cur = top;
+        for (int i = range - 1; i >= 0; i--) {
+            while (count[i] > 0) {
+                cur.setElement(i + min);
+                cur = cur.getNext();
+                count[i]--;
+            }
+        }
     }
 
     public Cell<Integer> getTop() {
         return top;
     }
 
+    //q9
     public static void main(String[] args) {
         Stack pilha = new Stack();
 
@@ -256,6 +275,8 @@ public class Stack {
 
         System.out.println("---------------------");
         System.out.println("Count Sort");
+        pilha.push(212);
+        pilha.countingSortDesc();
         pilha.showStack();
         System.out.println("---------------------");
 

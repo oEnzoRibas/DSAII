@@ -1,7 +1,5 @@
 package Course.Classes.B;
 
-import java.util.Vector;
-
 public class SortingAlgorithms {
 
 
@@ -32,6 +30,33 @@ public class SortingAlgorithms {
         }
     }
 
+    public static int[] countingSort(int[] v){
+        int size = v.length;
+
+        int max = v[0];
+        for (int i = 1; i < size; i++){
+            if (v[i] > max) max = v[i];
+        }
+
+        int[] cntArr = new int[max+1];
+
+        for (int i= 0; i < size; i++){
+            cntArr[v[i]]++;
+        }
+
+        for (int i = 1; i <= max; i++) {
+            cntArr[i] += cntArr[i - 1];
+        }
+
+        int[] ans = new int[size];
+        for (int i = size - 1; i >= 0; i--) {
+            int a = v[i];
+            ans[cntArr[a] - 1] = a;
+            cntArr[a]--;
+        }
+        return ans;
+    }
+
     public static void swap(int[]v, int a, int b){
         int tmp= v[a];
         v[a] = v[b];
@@ -42,10 +67,9 @@ public class SortingAlgorithms {
 
         int[] vet = {2, 7, 6, 40, 1, 30};
 
-        selectionSort(vet);
+        int[]res = countingSort(vet);
 
-
-        for (int i : vet){
+        for (int i : res){
             System.out.println(i);
         }
     }
