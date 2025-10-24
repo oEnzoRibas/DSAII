@@ -1,7 +1,5 @@
 package Course.Lists.L7.A;
 
-import Course.Lists.L6.Cell;
-
 public class QueueNoSentinel {
     private Cell<Integer> first, last;
     private int size;
