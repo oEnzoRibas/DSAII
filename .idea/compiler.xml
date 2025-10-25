@@ -13,6 +13,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="dsaii" options="--enable-preview --enable-preview" />
       <module name="meuprojeto" options="--enable-preview --enable-preview" />
     </option>
   </component>
