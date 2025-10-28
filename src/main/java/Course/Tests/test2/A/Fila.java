@@ -1,4 +1,6 @@
-package A;
+package Course.Tests.test2.A;
+
+import javax.imageio.stream.ImageInputStream;
 
 public class Fila {
     CelulaInt first, last;
@@ -121,4 +123,19 @@ public class Fila {
         }
     }
 }
+
+    public static void main(String[] args) {
+        Fila fila = new Fila();
+
+        fila.enfileirar(1);
+        fila.enfileirar(15);
+        fila.enfileirar(1);
+        fila.enfileirar(1113);
+        fila.enfileirar(111);
+
+        fila.selectionSort();
+        fila.mostrarfila();
+
+
+    }
 }

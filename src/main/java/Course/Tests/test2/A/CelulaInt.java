@@ -1,4 +1,4 @@
-package A;
+package Course.Tests.test2.A;
 
 public class CelulaInt {
     private int elemento;
