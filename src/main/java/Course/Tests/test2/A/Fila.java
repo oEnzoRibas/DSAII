@@ -111,31 +111,53 @@ public class Fila {
             CelulaInt minCell = this.first;
             int min = this.first.getElemento();
             for (CelulaInt d = c.getProx(); d != null; d = d.getProx()) {
-                if (d.getElemento() < min){
+                if (d.getElemento() < min) {
                     min = d.getElemento();
                     minCell = d;
-            }
-                if (c.getElemento() > min){
+                }
+                if (c.getElemento() > min) {
                     int tmp = c.getElemento();
                     c.setElemento(min);
                     minCell.setElemento(tmp);
                 }
+            }
         }
     }
-}
+
+    // CORRETO
+//    public void selectionSort() {
+//        for (CelulaInt c = this.first; c != null; c = c.getProx()) {
+//            CelulaInt minCell = c;
+//            int min = c.getElemento();
+//            for (CelulaInt d = c.getProx(); d != null; d = d.getProx()) {
+//                if (d.getElemento() < min) {
+//                    min = d.getElemento();
+//                    minCell = d;
+//                }
+//                if (c.getElemento() > min) {
+//                    int tmp = c.getElemento();
+//                    c.setElemento(min);
+//                    minCell.setElemento(tmp);
+//                }
+//            }
+//        }
+//    }
 
     public static void main(String[] args) {
         Fila fila = new Fila();
 
         fila.enfileirar(1);
         fila.enfileirar(15);
-        fila.enfileirar(1);
-        fila.enfileirar(1113);
-        fila.enfileirar(111);
+        fila.enfileirar(61);
+        fila.enfileirar(3113);
+        fila.enfileirar(711);
 
         fila.selectionSort();
         fila.mostrarfila();
 
+        fila.furafila(15);
+
+        fila.mostrarfila();
 
     }
 }
