@@ -1,3 +1,5 @@
+package Course.Lists.L8.A;
+
 public class LinearList<T>{
 	private T[] array;
 	private int n;
