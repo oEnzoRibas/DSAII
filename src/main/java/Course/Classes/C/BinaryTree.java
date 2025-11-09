@@ -1,7 +1,6 @@
 package Course.Classes.C;
 
 public class BinaryTree {
-
     Node root;
 
 
