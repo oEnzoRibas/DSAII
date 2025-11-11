@@ -1,4 +1,4 @@
-package Course.Classes.C;
+package Course.Classes.D;
 
 public class Node {
     private int element;
