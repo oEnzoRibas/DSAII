@@ -1,4 +1,4 @@
-package Course.Classes.B;
+package Course.Classes.Sorting;
 
 public class SortingAlgorithms {
 

@@ -1,4 +1,4 @@
-package Course.Classes.C;
+package Course.Classes.List;
 
 public class IntegerList {
 	private int[] array;

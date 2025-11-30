@@ -1,4 +1,4 @@
-package Course.Classes.D;
+package Course.Classes.BinaryTree;
 
 public class BinaryTree {
     Node root;

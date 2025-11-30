@@ -1,4 +1,4 @@
-package Course.Classes.A;
+package Course.Classes.OOP;
 
 public class Sheep extends Animal{
     void print(){
