@@ -6,6 +6,14 @@ public class Node {
 
     public Node(int x) {
         this.setElement(x);
+        this.setRight(null);
+        this.setLeft(null);
+    }
+
+    public Node (int x, Node left, Node right){
+        this.setElement(x);
+        this.setLeft(left);
+        this.setRight(right);
     }
 
     public int getElement() {
