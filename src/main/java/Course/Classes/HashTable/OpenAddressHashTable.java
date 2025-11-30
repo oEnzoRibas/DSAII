@@ -1,6 +1,6 @@
 package Course.Classes.HashTable;
 
-public class DirectHashTable {
+public class OpenAddressHashTable {
 
 
     private int[] hashTable;
@@ -10,7 +10,7 @@ public class DirectHashTable {
 
 
 
-    DirectHashTable(int m, int of){
+    OpenAddressHashTable(int m, int of){
         this.of = of;
         this.m = m;
         this.TOTALSIZE = m+of;
@@ -50,15 +50,33 @@ public class DirectHashTable {
         return hashTable[hash] >= 0;
     }
 
+    int search(int x){
+        int hash = hash(x);
+        int resp = -1;
+        int storedInHash = hashTable[hash];
+        if (storedInHash == x ) return hash;
+        else {
+            for (int i = 0; i < ofUsed; i++){
+                if ( hashTable[m+i] == x){
+                    resp = m+i;
+                }
+            }
+        }
+        return resp;
+    }
+
     public static void main(String[] args) {
-        DirectHashTable ht = new DirectHashTable(13, 3);
+        OpenAddressHashTable ht = new OpenAddressHashTable(13, 3);
         ht.insert(22);
         ht.insert(11);
         ht.insert(12);
         ht.insert(0);
         ht.insert(14);
         ht.insert(26);
+        ht.insert(39);
         ht.show();
+
+        System.out.println(ht.search(22));
     }
 
 }
